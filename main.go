@@ -27,7 +27,7 @@ func getLinesChannel(f io.ReadCloser) <-chan string {
 			if i := bytes.IndexByte(data, '\n'); i != -1 {
 				str += string(data[:i])
 				data = data[i+1:]
-				fmt.Printf("read: %s\n", str)
+				out <- str
 				str = ""
 			}
 
